@@ -21,12 +21,40 @@ class Course {
 
     boolean book(Student student) {
         // Please complete the body of method book!
+        if (openSpaces > 0) {
+            Integer freeSpace = isThereSpace(student);
+            if (freeSpace != null) {
+                studentList[freeSpace] = student;
+                openSpaces--;
+                return true;
+            }
+        }
         return false;
+    }
+
+    private Integer isThereSpace(Student newComming) {
+        for (int i = 0; i < studentList.length; i++) {
+            Student alreadyThere = studentList[i];
+            if (alreadyThere != null) {
+                if (alreadyThere.name.equals(newComming.name)) {
+                    return null;
+                }
+            } else {
+                return i;
+            }
+        }
+        return null;
     }
 
     String createParticipantList() {
         String participantList = "";
-        // Please complete the body of method createParticipantList!
+        for (int i = 0; i < studentList.length; i++) {
+            if (studentList[i] != null) {
+                participantList = participantList + studentList[i].name + "\n";
+            }
+        }
         return participantList;
     }
+    // Please complete the body of method createParticipantList!
+
 }
