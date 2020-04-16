@@ -20,7 +20,6 @@ class Course {
     }
 
     boolean book(Student student) {
-        // Please complete the body of method book!
         if (openSpaces > 0) {
             Integer freeSpace = isThereSpace(student);
             if (freeSpace != null) {
